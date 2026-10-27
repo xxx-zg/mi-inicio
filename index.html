@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#11120d">
+<title>Mi Inicio | Noticias y Google</title>
+<meta name="description" content="Página de inicio con búsqueda de Google, accesos directos y noticias recientes de Argentina y el mundo.">
+<style>
+:root{color-scheme:dark;--bg:#11120d;--panel:#1e2018;--panel2:#292b20;--text:#f5f3e9;--muted:#b7b8aa;--accent:#d8e16b;--line:#393b2d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:1100px;margin:auto;padding:22px 16px 50px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:6px 0 28px}.brand{font-size:14px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}.clock{font-variant-numeric:tabular-nums;color:var(--muted);font-size:14px}
+.hero{text-align:center;padding:24px 0 20px}.logo{font-size:clamp(48px,10vw,76px);font-weight:650;letter-spacing:-.065em;margin:0 0 18px}.logo span:nth-child(1){color:#8ab4f8}.logo span:nth-child(2){color:#ea4335}.logo span:nth-child(3){color:#fbbc05}.logo span:nth-child(4){color:#8ab4f8}.logo span:nth-child(5){color:#34a853}.logo span:nth-child(6){color:#ea4335}
+.search{display:flex;align-items:center;gap:12px;max-width:720px;margin:auto;background:#30320f;border-radius:100px;padding:7px 9px 7px 20px;box-shadow:0 3px 16px #0002}.search input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--text);font-size:16px;padding:12px 0}.search button{border:0;background:var(--accent);color:#20220e;border-radius:50px;padding:12px 18px;font-weight:700;cursor:pointer}
+.shortcuts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;max-width:720px;margin:24px auto 28px}.shortcut{display:flex;align-items:center;gap:10px;justify-content:center;flex-direction:column;color:var(--text);text-decoration:none;font-size:13px}.bubble{width:52px;height:52px;border-radius:50%;background:var(--panel2);display:grid;place-items:center;font-size:22px;font-weight:700;color:var(--accent)}.shortcut:active .bubble{transform:scale(.96)}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:30px 0 14px}.section-head h2{margin:0;font-size:23px;letter-spacing:-.03em}.section-head p{margin:4px 0 0;color:var(--muted);font-size:13px}.refresh{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:999px;padding:9px 13px;cursor:pointer}
+.tabs{display:flex;gap:8px;overflow:auto;padding:0 0 12px;margin-bottom:10px}.tab{white-space:nowrap;border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--text);padding:9px 14px;cursor:pointer}.tab.active{background:var(--accent);color:#20220e;border-color:var(--accent);font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:var(--panel);border:1px solid #ffffff0a;border-radius:18px;overflow:hidden;min-width:0;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .15s}.card:active{transform:scale(.99)}.thumb{width:100%;aspect-ratio:16/9;object-fit:cover;background:linear-gradient(135deg,#3b4022,#20221a)}.card-body{padding:14px 15px 16px;display:flex;flex-direction:column;gap:7px;flex:1}.source{font-size:11px;color:var(--accent);text-transform:uppercase;font-weight:800;letter-spacing:.07em}.card h3{font-size:17px;line-height:1.28;margin:0;letter-spacing:-.02em}.summary{color:var(--muted);font-size:13px;margin:0}.meta{color:#929486;font-size:11px;margin-top:auto;padding-top:5px}.status{color:var(--muted);font-size:14px;padding:18px 2px}.footer{margin-top:34px;border-top:1px solid var(--line);padding-top:16px;color:#8e9082;font-size:12px}.footer a{color:var(--muted)}
+@media(min-width:800px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.card h3{font-size:18px}.shortcuts{grid-template-columns:repeat(6,minmax(0,1fr))}}
+@media(max-width:420px){main{padding:14px 12px 34px}.grid{grid-template-columns:1fr}.card{display:grid;grid-template-columns:38% 1fr;min-height:130px}.thumb{height:100%;min-height:130px;aspect-ratio:auto}.card-body{padding:11px 12px;gap:5px}.card h3{font-size:15px}.summary{display:none}.shortcuts{gap:8px}.bubble{width:48px;height:48px}.section-head h2{font-size:21px}}
+</style>
+</head>
+<body>
+<main>
+  <div class="top"><div class="brand">✦ Tu página de inicio</div><div class="clock" id="clock"></div></div>
+  <section class="hero">
+    <h1 class="logo" aria-label="Google"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></h1>
+    <form class="search" id="searchForm"><span style="font-size:21px">🔎</span><input id="q" placeholder="Buscar en Google o escribir una dirección" autocomplete="off" aria-label="Buscar en Google"><button type="submit">Buscar</button></form>
+  </section>
+  <nav class="shortcuts" aria-label="Accesos directos">
+    <a class="shortcut" href="https://www.youtube.com/"><span class="bubble">▶</span>YouTube</a>
+    <a class="shortcut" href="https://www.tycsports.com/"><span class="bubble">⚽</span>TyC Sports</a>
+    <a class="shortcut" href="https://www.espn.com.ar/"><span class="bubble">E</span>ESPN</a>
+    <a class="shortcut" href="https://www.clarin.com/"><span class="bubble">C</span>Clarín</a>
+    <a class="shortcut" href="https://www.infobae.com/"><span class="bubble">i</span>Infobae</a>
+    <a class="shortcut" href="https://www.telefenoticias.com.ar/"><span class="bubble">T</span>Telefe</a>
+  </nav>
+  <section>
+    <div class="section-head"><div><h2>🇦🇷 Argentina y actualidad</h2><p>Noticias recientes de medios argentinos</p></div><button class="refresh" onclick="loadNews()">↻ Actualizar</button></div>
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-cat="all">Todas</button><button class="tab" data-cat="argentina">Argentina</button><button class="tab" data-cat="deportes">Deportes</button><button class="tab" data-cat="mundo">Mundo</button><button class="tab" data-cat="tecnologia">Tecnología</button>
+    </div>
+    <div id="status" class="status">Buscando titulares recientes… Si la conexión RSS está bloqueada, tocá Actualizar o abrí los medios desde los accesos directos.</div>
+    <div class="grid" id="news"></div>
+  </section>
+  <div class="footer">Los titulares y las imágenes pertenecen a sus medios originales. Tocá una tarjeta para leer la noticia completa en el sitio de origen. Las noticias se cargan por internet y pueden depender de que el proveedor RSS esté disponible.</div>
+</main>
+<script>
+const feeds=[
+ {cat:'argentina',name:'Argentina',url:'https://news.google.com/rss/search?q=Argentina+OR+Buenos+Aires+when:2d&hl=es-419&gl=AR&ceid=AR:es-419'},
+ {cat:'argentina',name:'Política y economía',url:'https://news.google.com/rss/search?q=Argentina+politica+OR+economia+when:2d&hl=es-419&gl=AR&ceid=AR:es-419'},
+ {cat:'deportes',name:'Deportes',url:'https://news.google.com/rss/search?q=futbol+OR+TyC+Sports+OR+ESPN+Argentina+when:2d&hl=es-419&gl=AR&ceid=AR:es-419'},
+ {cat:'mundo',name:'Mundo',url:'https://news.google.com/rss/search?q=noticias+internacionales+OR+mundo+when:2d&hl=es-419&gl=AR&ceid=AR:es-419'},
+ {cat:'tecnologia',name:'Tecnología',url:'https://news.google.com/rss/search?q=tecnologia+OR+ciencia+when:2d&hl=es-419&gl=AR&ceid=AR:es-419'},
+ {cat:'argentina',name:'Televisión y actualidad',url:'https://news.google.com/rss/search?q=site:clarin.com+OR+site:infobae.com+OR+site:tn.com.ar+OR+site:telefenoticias.com.ar+Argentina+when:2d&hl=es-419&gl=AR&ceid=AR:es-419'}
+];
+const fallback={
+ argentina:'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=900&q=80',
+ deportes:'https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=900&q=80',
+ mundo:'https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=900&q=80',
+ tecnologia:'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80'
+};
+let items=[], active='all';
+const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function textOnly(s){let d=document.createElement('div');d.innerHTML=s||'';return (d.textContent||'').replace(/\s+/g,' ').trim()}
+function getImg(it){let s=it.thumbnail||it.enclosure?.link||'';if(!s){let m=(it.content||it.description||'').match(/<img[^>]+src=["']([^"']+)/i);if(m)s=m[1]}return s}
+function parseFeed(xml,feed){
+ const doc=new DOMParser().parseFromString(xml,'application/xml');
+ if(doc.querySelector('parsererror')) throw Error('La respuesta RSS no es XML válido');
+ return [...doc.querySelectorAll('item, entry')].slice(0,12).map(n=>{
+   const rawTitle=textOnly(n.querySelector('title')?.textContent||'');
+   const parts=rawTitle.split(' - ');
+   const title=parts.length>1?parts.slice(0,-1).join(' - '):rawTitle;
+   const source=parts.length>1?parts[parts.length-1]:feed.name;
+   const desc=n.querySelector('description,summary,content')?.textContent||'';
+   const enclosure=n.querySelector('enclosure')?.getAttribute('url')||'';
+   const media=n.getElementsByTagName('media:content')[0]?.getAttribute('url')||n.getElementsByTagName('media:thumbnail')[0]?.getAttribute('url')||'';
+   const image=enclosure||media||getImg({content:desc});
+   const linkEl=n.querySelector('link');
+   const link=linkEl?.getAttribute('href')||linkEl?.textContent?.trim()||'';
+   const date=n.querySelector('pubDate,published,updated')?.textContent||'';
+   return {title,link,summary:textOnly(desc).slice(0,190),image,date,source:source||feed.name,cat:feed.cat};
+ }).filter(x=>x.title&&/^https?:\/\//i.test(x.link));
+}
+async function fetchFeed(feed){
+ // RSS2JSON entrega el RSS convertido a JSON y evita el bloqueo CORS del navegador.
+ const url='https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(feed.url)+'&_='+Date.now();
+ const res=await fetch(url,{signal:AbortSignal.timeout(20000),cache:'no-store',credentials:'omit'});
+ if(!res.ok)throw Error('El servicio de noticias respondió '+res.status);
+ const data=await res.json();
+ if(data.status!=='ok'||!Array.isArray(data.items))throw Error(data.message||'No se pudo leer el feed');
+ return data.items.slice(0,12).map(it=>{
+   const rawTitle=textOnly(it.title||'');
+   const parts=rawTitle.split(' - ');
+   const title=parts.length>1?parts.slice(0,-1).join(' - '):rawTitle;
+   const source=parts.length>1?parts[parts.length-1]:feed.name;
+   let image=it.thumbnail||it.enclosure?.link||'';
+   if(!image){const m=(it.content||it.description||'').match(/<img[^>]+src=["']([^"']+)/i);if(m)image=m[1]}
+   return {title,link:it.link||'',summary:textOnly(it.description||it.content||'').slice(0,190),image,date:it.pubDate||'',source:source||feed.name,cat:feed.cat};
+ }).filter(x=>x.title&&/^https?:\/\//i.test(x.link));
+}
+function render(){const list=items.filter(x=>active==='all'||x.cat===active);document.getElementById('news').innerHTML=list.slice(0,42).map(x=>`<a class="card" href="${esc(x.link)}" target="_blank" rel="noopener noreferrer"><img class="thumb" loading="lazy" src="${esc(x.image||fallback[x.cat]||fallback.argentina)}" onerror="this.onerror=null;this.src='${fallback[x.cat]||fallback.argentina}'" alt=""><div class="card-body"><div class="source">${esc(x.source)}</div><h3>${esc(x.title)}</h3>${x.summary?`<p class="summary">${esc(x.summary)}</p>`:''}<div class="meta">${x.date?esc(new Date(x.date).toLocaleDateString('es-AR',{day:'numeric',month:'short'})):'Titular reciente'} · Leer noticia ↗</div></div></a>`).join('');if(!list.length)document.getElementById('news').innerHTML='<div class="status">No hay titulares para esta sección por ahora.</div>';document.getElementById('status').textContent=items.length?`Se cargaron ${items.length} titulares. Tocá una tarjeta para abrir la nota original.`:'No pudimos traer los titulares automáticamente. Podés usar los accesos directos de arriba.'}
+async function loadNews(){const status=document.getElementById('status');status.textContent='Actualizando titulares…';const results=await Promise.allSettled(feeds.map(fetchFeed));items=results.filter(r=>r.status==='fulfilled').flatMap(r=>r.value);const seen=new Set();items=items.filter(x=>{const k=x.title.toLowerCase();if(seen.has(k))return false;seen.add(k);return true});items.sort((a,b)=>{const da=Date.parse(b.date)||0,db=Date.parse(a.date)||0;return da-db});render()}
+document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();const q=document.getElementById('q').value.trim();if(q)location.href='https://www.google.com/search?q='+encodeURIComponent(q)});
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));b.classList.add('active');active=b.dataset.cat;render()}));
+function tick(){document.getElementById('clock').textContent=new Date().toLocaleString('es-AR',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}tick();setInterval(tick,30000);loadNews();setInterval(loadNews,10*60*1000);
+</script>
+</body>
+</html>
